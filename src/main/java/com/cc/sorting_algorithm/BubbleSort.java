@@ -1,5 +1,9 @@
 package com.cc.sorting_algorithm;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Arrays;
+
 /**
  * @author CyRun
  * Date：2022/6/9 9:36
@@ -7,17 +11,25 @@ package com.cc.sorting_algorithm;
  * Description：冒泡排序
  */
 public class BubbleSort {
-    public int[] bubbleSort(int[] arr){
-        int temp;
-        for (int i = 0; i < arr.length-1; i++) {
-            for (int j = 0; j < arr.length-1-i; j++) {
-                if (arr[j]>arr[j+1]){
-                    temp=arr[j+1];
-                    arr[j+1]=arr[j];
-                    arr[j]=temp;
+    public void bubbleSort(@NotNull int[] arr) {
+        //排序的轮次
+        int n = arr.length - 1;
+        int temp;//交换的临时变量
+        do {
+            //表示最后一次交换索引的位置
+            int last = 0;
+            for (int i = 0; i < n; i++) {
+                if (arr[i] > arr[i + 1]) {
+                    temp = arr[i + 1];
+                    arr[i + 1] = arr[i];
+                    arr[i] = temp;
+                    last = i;
                 }
             }
-        }
-        return arr;
+            n = last;
+        } while (n != 0);
+        System.out.println(Arrays.toString(arr));
     }
+    //BubbleSort bubbleSort = new BubbleSort();
+    //        bubbleSort.bubbleSort(arr);
 }

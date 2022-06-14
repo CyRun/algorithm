@@ -10,22 +10,35 @@ import org.jetbrains.annotations.NotNull;
  */
 public class BinarySearch {
     public int binarySearch(@NotNull int[] arr, int num) {
-        int low = 0;//数组的开始的位置,左边界
-        int high = arr.length - 1;//数组的结束位置,有边界
+        //数组的开始的位置,左边界
+        int low = 0;
+        //数组的结束位置,有边界
+        int high = arr.length - 1;
         while (low <= high) {
-            int mid = (low + high) >>> 1;//取数组的中间位置，如果(low+high)为偶数则向下取整
-            int guess = arr[mid];//中间位置对应的数
-            if (guess == num) {//如果查找的数据与中间位置对应的数相等
-                return mid;//返回数组下标
+            //取数组的中间位置，如果(low+high)为偶数则向下取整
+            int mid = (low + high) >>> 1;
+            //中间位置对应的数
+            int guess = arr[mid];
+            //如果查找的数据与中间位置对应的数相等
+            if (guess == num) {
+                //返回数组下标
+                return mid;
             }
-            if (guess > num) {//如果要查找的数比中间的数小
-                high = mid - 1;//设为右边界
+            //如果要查找的数比中间的数小
+            if (guess > num) {
+                //设为右边界
+                high = mid - 1;
             } else {
-                low = mid + 1;//设为左边界
+                //设为左边界
+                low = mid + 1;
             }
         }
-        return -1;//没有查到到,返回-1
+        //没有查到到,返回-1
+        return -1;
     }
+//    BinarySearch binarySearch = new BinarySearch();
+//    int i = binarySearch.binarySearch(arr, 9);
+//    System.out.println(i);
 
     //问题1.如果low=0,high=Inter.Max_Value-1,使用mid=(low + high) / 2 会产生整数溢出问题
     //解决方法1: low/2+high/2 ====> low+(-low/2+high/2) ====> low+(high-low)/2
